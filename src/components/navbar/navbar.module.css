@@ -1,3 +1,67 @@
-#navbarColor {
-    background-color: green;
+:root {
+  --primary-color: green;
+  --secondary-color: ;
 }
+
+.navbar {
+  background-color: var(--primary-color);
+}
+
+.brand {
+  font-size: 1.5rem;
+  color: #fff !important;
+}
+
+.navContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem 0;
+}
+.navLink {
+  color: rgba(255, 255, 255, 0.8) !important;
+  transition: color 0.3s ease;
+}
+
+.navLink:hover {
+  color: #fff !important;
+}
+
+.searchForm {
+  max-width: 500px;
+  width: 100%;
+}
+
+.searchInput {
+  border-radius: 20px 0 0 20px !important;
+}
+.searchButton {
+  background-color: darkgreen !important;
+  border-color: darkgreen !important;
+  border-radius: 0 20px 20px 0 !important;
+  transition: color 0.3s ease;
+}
+.searchButton:hover {
+  background-color: greenyellow !important;
+}
+.authLinks {
+  gap: 1rem;
+}
+
+.toggler {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+@media (min-width: 992px) {
+  .navContainer {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    gap: 0;
+  }
+}
+/* #navbarColor {
+  background-color: green;
+} */
