@@ -1,14 +1,15 @@
 import { useState } from "react";
-import NavBar from "./components/navbar/NavbarComponent";
+import NavbarComponent from "./components/navbar/navbarComponent";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
-      <NavBar />
+      <NavbarComponent />
+
       <div>
-        <h1>Hi! Im Paul</h1>
+        <h1>Welcome to Groovo!</h1>
       </div>
     </>
   );
