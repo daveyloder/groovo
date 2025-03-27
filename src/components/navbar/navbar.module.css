@@ -1,10 +1,13 @@
 :root {
-  --primary-color: green;
-  --secondary-color: ;
+  --background-color: #260a0c;
+  --button-color: #0b5916;
+  --navbar-color: #f28749;
+  --card-color: #a6411c;
+  /* --primary-color: green; */
 }
 
 .navbar {
-  background-color: var(--primary-color);
+  background-color: var(--navbar-color);
 }
 
 .brand {
@@ -37,13 +40,13 @@
   border-radius: 20px 0 0 20px !important;
 }
 .searchButton {
-  background-color: darkgreen !important;
-  border-color: darkgreen !important;
+  background-color: var(--button-color) !important;
+  border-color: var(--button-color) !important;
   border-radius: 0 20px 20px 0 !important;
   transition: color 0.3s ease;
 }
 .searchButton:hover {
-  background-color: greenyellow !important;
+  background-color: darkgreen !important;
 }
 .authLinks {
   gap: 1rem;
