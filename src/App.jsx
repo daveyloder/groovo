@@ -1,5 +1,5 @@
 import { useState } from "react";
-import NavbarComponent from "./components/navbar/navbarComponent";
+import NavbarComponent from "./components/navbar/NavbarComponent";
 
 function App() {
   const [count, setCount] = useState(0);
