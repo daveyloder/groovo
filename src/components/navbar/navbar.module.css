@@ -1,5 +1,5 @@
 :root {
-  --primary-color: green;
+  --primary-color: #EB8D46;
   --secondary-color: ;
 }
 
@@ -37,13 +37,13 @@
   border-radius: 20px 0 0 20px !important;
 }
 .searchButton {
-  background-color: darkgreen !important;
-  border-color: darkgreen !important;
+  background-color: #330D0D !important;
+  border-color: #330D0D !important;
   border-radius: 0 20px 20px 0 !important;
   transition: color 0.3s ease;
 }
 .searchButton:hover {
-  background-color: greenyellow !important;
+  background-color: #6d2121 !important;
 }
 .authLinks {
   gap: 1rem;
