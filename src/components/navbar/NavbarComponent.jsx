@@ -1,63 +1,49 @@
-// Navbar.jsx
 import React, { useState } from "react";
+import styles from "./navbar.module.css";
+
 import {
-  Navbar,
-  NavbarBrand,
-  NavbarToggler,
   Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
   Nav,
   NavItem,
   NavLink,
-  Input,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+  NavbarText,
   Button,
-  Form,
-  FormGroup,
+  Input,
+  Form
 } from "reactstrap";
 
-const NavBar = () => {
+function NavbarComponent() {
   const [isOpen, setIsOpen] = useState(false);
-  const [search, setSearch] = useState("");
 
   const toggle = () => setIsOpen(!isOpen);
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    alert(`Searching for: ${search}`);
-    setSearch("");
-  };
-
   return (
-    <Navbar color="dark" dark expand="md" className="px-3">
-      <NavbarBrand href="/">My Website</NavbarBrand>
+    <Navbar expand="lg" className="px-3" id={styles.navbarColor}>
+      <NavbarBrand href="#">Groovo</NavbarBrand>
       <NavbarToggler onClick={toggle} />
       <Collapse isOpen={isOpen} navbar>
-        <Nav className="me-auto" navbar>
+        <Nav className="w-100 d-flex justify-content-between align-items-center" navbar>
+          
+          <Form className="d-flex mx-auto">
+          <Input type="search" placeholder="Search" className="me-2" />
+          <Button color="primary">Search</Button>
+        </Form>
+          
           <NavItem>
-            <NavLink href="/">Home</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink href="/about">About</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink href="/contact">Contact</NavLink>
+            <NavLink href="#">Login / Create Account</NavLink>
           </NavItem>
         </Nav>
-        <Form className="d-flex" onSubmit={handleSearch}>
-          <FormGroup className="mb-0 me-2">
-            <Input
-              type="text"
-              placeholder="Search..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-          </FormGroup>
-          <Button color="primary" type="submit">
-            Search
-          </Button>
-        </Form>
+        
       </Collapse>
     </Navbar>
   );
-};
+}
 
-export default NavBar;
+export default NavbarComponent;
