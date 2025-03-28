@@ -16,16 +16,36 @@ import {
 } from "reactstrap";
 
 import { FaSearch, FaUser } from "react-icons/fa";
+import { getSpotifyToken } from "../../services/spotifyService";
 
 function NavbarComponent() {
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
   const toggle = () => setIsOpen(!isOpen);
-  const handleSearch = (e) => {
+  const handleSearch = async (e) => {
     e.preventDefault();
-    // Add search logic here later
-    console.log("Searching for: ", searchQuery);
+
+    if (!searchQuery) return;
+
+    try {
+      const token = await getSpotifyToken(); // Function to fetch token
+      const response = await fetch(
+        `https://api.spotify.com/v1/search?q=${encodeURIComponent(
+          searchQuery
+        )}&type=track&limit=10`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      const data = await response.json();
+
+      console.log("Search Results:", data.tracks.items); // Display results or update state
+    } catch (error) {
+      console.error("Error fetching Spotify data:", error);
+    }
   };
 
   return (
