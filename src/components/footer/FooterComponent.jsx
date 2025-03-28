@@ -1,12 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
-
+import styles from "./Footer.module.css";
 function Footer() {
   return (
     <div className="w-100 bg-light text-muted mt-auto">
       <footer className="site-footer text-center text-lg-start w-100">
         {/* Section: Social Media  */}
-        <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+        <section
+          className={`${styles.section}d-flex justify-content-center justify-content-lg-between p-4 border-bottom`}
+        >
           <div className="me-5 d-none d-lg-block">
             <span>Connect with us on social media!</span>
           </div>
@@ -36,16 +37,41 @@ function Footer() {
 
             <div className="col-md-4 mb-4">
               <h6 className="text-uppercase fw-bold mb-4">Links</h6>
-              <p><Link className="text-reset text-decoration-none" to="/">Home</Link></p>
-              <p><Link className="text-reset text-decoration-none" to="/services">Services</Link></p>
-              <p><Link className="text-reset text-decoration-none" to="/contactus">Contact Us</Link></p>
+              {/* <p>
+                <Link className="text-reset text-decoration-none" to="/">
+                  Home
+                </Link>
+              </p>
+              <p>
+                <Link
+                  className="text-reset text-decoration-none"
+                  to="/services"
+                >
+                  Services
+                </Link>
+              </p>
+              <p>
+                <Link
+                  className="text-reset text-decoration-none"
+                  to="/contactus"
+                >
+                  Contact Us
+                </Link>
+              </p> */}
             </div>
 
             <div className="col-md-4 mb-4">
               <h6 className="text-uppercase fw-bold mb-4">Contact</h6>
-              <p><i className="fas fa-house me-3"></i> 1801 N Broad St, Philadelphia, PA</p>
-              <p><i className="fas fa-envelope me-3"></i> groovo@example.com</p>
-              <p><i className="fas fa-phone me-3"></i> +1 (609) 234-5678</p>
+              <p>
+                <i className="fas fa-house me-3"></i> 1801 N Broad St,
+                Philadelphia, PA
+              </p>
+              <p>
+                <i className="fas fa-envelope me-3"></i> groovo@example.com
+              </p>
+              <p>
+                <i className="fas fa-phone me-3"></i> +1 (609) 234-5678
+              </p>
             </div>
           </div>
         </section>
