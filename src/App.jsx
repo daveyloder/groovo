@@ -1,5 +1,6 @@
 import { useState } from "react";
 import NavbarComponent from "./components/navbar/NavbarComponent";
+import Header from "./components/headers/HeaderComponent";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -8,9 +9,7 @@ function App() {
     <>
       <NavbarComponent />
 
-      <div>
-        <h1>Welcome to Groovo!</h1>
-      </div>
+      <Header />
     </>
   );
 }
