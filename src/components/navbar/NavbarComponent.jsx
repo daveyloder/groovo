@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styles from "./navbar.module.css";
 
-
 import {
   Collapse,
   Navbar,
@@ -17,7 +16,7 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
-  ModalFooter
+  ModalFooter,
 } from "reactstrap";
 
 import { FaSearch, FaUser } from "react-icons/fa";
@@ -26,39 +25,18 @@ import { getSpotifyToken } from "../../services/spotifyService";
 
 import LoginComponent from "../login/LoginComponent";
 
-
-function NavbarComponent() {
+function NavbarComponent({ onSearch }) {
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [modal, setModal] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
+  const toggleModal = () => setModal(!modal);
+
   const handleSearch = async (e) => {
     e.preventDefault();
-
-    if (!searchQuery) return;
-
-    try {
-      const token = await getSpotifyToken(); // Function to fetch token
-      const response = await fetch(
-        `https://api.spotify.com/v1/search?q=${encodeURIComponent(
-          searchQuery
-        )}&type=track&limit=10`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      const data = await response.json();
-
-      console.log("Search Results:", data.tracks.items); // Display results or update state
-    } catch (error) {
-      console.error("Error fetching Spotify data:", error);
-    }
+    onSearch(searchQuery);
   };
-
-  const [modal, setModal] = useState(false);
-  const toggleModal = () => setModal(!modal);
 
   return (
     <Navbar expand="lg" className={`px-3 ${styles.navbar}`} dark>
@@ -91,7 +69,11 @@ function NavbarComponent() {
           </Form>
           <div className={`d-flex ${styles.authLinks}`}>
             <NavItem>
-              <NavLink className={styles.navLink} href="#" onClick={toggleModal}>
+              <NavLink
+                className={styles.navLink}
+                href="#"
+                onClick={toggleModal}
+              >
                 <FaUser className="me-1" />
                 Login
               </NavLink>
@@ -99,7 +81,6 @@ function NavbarComponent() {
               <Modal isOpen={modal} toggle={toggleModal}>
                 <LoginComponent />
               </Modal>
-        
             </NavItem>
             <NavItem>
               <NavLink className={styles.navLink} href="/">
