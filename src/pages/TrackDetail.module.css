@@ -1,5 +1,14 @@
+:root {
+  --background-color: #260a0c;
+  --button-color: #0b5916;
+  --navbar-color: #f28749;
+  --card-color: #a6411c;
+  /* --primary-color: green; */
+}
+
 .trackDetailContainer {
-  padding: 2rem;
+  background-color: var(--background-color);
+  padding: 1rem;
   margin-top: 1rem;
   max-width: 1200px;
 }
