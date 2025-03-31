@@ -1,0 +1,59 @@
+.resultsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  padding: 20px;
+}
+
+.resultCard {
+  width: 250px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease-in-out;
+}
+
+.resultCard:hover {
+  transform: scale(1.05);
+}
+
+.albumImage {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.cardBody {
+  padding: 10px;
+  text-align: center;
+}
+
+.cardTitle {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.cardText {
+  font-size: 14px;
+  color: #666;
+}
+
+.noResults {
+  font-size: 18px;
+  color: #888;
+  text-align: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.clickableCard {
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.clickableCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}

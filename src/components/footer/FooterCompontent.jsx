@@ -36,16 +36,41 @@ function Footer() {
 
             <div className="col-md-4 mb-4">
               <h6 className="text-uppercase fw-bold mb-4">Links</h6>
-              <p><Link className="text-reset text-decoration-none" to="/">Home</Link></p>
-              <p><Link className="text-reset text-decoration-none" to="/services">Services</Link></p>
-              <p><Link className="text-reset text-decoration-none" to="/contactus">Contact Us</Link></p>
+              <p>
+                <Link className="text-reset text-decoration-none" to="/">
+                  Home
+                </Link>
+              </p>
+              <p>
+                <Link
+                  className="text-reset text-decoration-none"
+                  to="/services"
+                >
+                  Services
+                </Link>
+              </p>
+              <p>
+                <Link
+                  className="text-reset text-decoration-none"
+                  to="/contactus"
+                >
+                  Contact Us
+                </Link>
+              </p>
             </div>
 
             <div className="col-md-4 mb-4">
               <h6 className="text-uppercase fw-bold mb-4">Contact</h6>
-              <p><i className="fas fa-house me-3"></i> 1801 N Broad St, Philadelphia, PA</p>
-              <p><i className="fas fa-envelope me-3"></i> groovo@example.com</p>
-              <p><i className="fas fa-phone me-3"></i> +1 (609) 234-5678</p>
+              <p>
+                <i className="fas fa-house me-3"></i> 1801 N Broad St,
+                Philadelphia, PA
+              </p>
+              <p>
+                <i className="fas fa-envelope me-3"></i> groovo@example.com
+              </p>
+              <p>
+                <i className="fas fa-phone me-3"></i> +1 (609) 234-5678
+              </p>
             </div>
           </div>
         </section>
