@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styles from "./navbar.module.css";
 
 import {
-  Collapse,
   Navbar,
   NavbarToggler,
   NavbarBrand,
@@ -43,53 +42,47 @@ function NavbarComponent({ onSearch }) {
       <NavbarBrand href="/" className={`fw-bold ${styles.brand}`}>
         Groovo
       </NavbarBrand>
-      <NavbarToggler onClick={toggle} className={styles.toggler} />
-      <Collapse isOpen={isOpen} navbar>
-        <Nav className={`w-100 ${styles.navContainer}`} navbar>
-          <Form
-            className={`mx-auto ${styles.searchForm}`}
-            onSubmit={handleSearch}
-          >
-            <InputGroup>
-              <Input
-                aria-describedby="searchbutton"
-                type="text"
-                placeholder="Search for music, artists..."
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className={styles.searchInput}
-              />
-              <Button
-                type="submit"
-                className={styles.searchButton}
-                color="primary"
-              >
-                <FaSearch />
-              </Button>
-            </InputGroup>
-          </Form>
-          <div className={`d-flex ${styles.authLinks}`}>
-            <NavItem>
-              <NavLink
-                className={styles.navLink}
-                href="#"
-                onClick={toggleModal}
-              >
-                <FaUser className="me-1" />
-                Login
-              </NavLink>
 
-              <Modal isOpen={modal} toggle={toggleModal}>
-                <LoginComponent />
-              </Modal>
-            </NavItem>
-            <NavItem>
-              <NavLink className={styles.navLink} href="/">
-                Create Account
-              </NavLink>
-            </NavItem>
-          </div>
-        </Nav>
-      </Collapse>
+      <Nav className={`w-100 ${styles.navContainer}`} navbar>
+        <Form
+          className={`mx-auto ${styles.searchForm}`}
+          onSubmit={handleSearch}
+        >
+          <InputGroup>
+            <Input
+              aria-describedby="searchbutton"
+              type="text"
+              placeholder="Search for music, artists..."
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className={styles.searchInput}
+            />
+            <Button
+              type="submit"
+              className={styles.searchButton}
+              color="primary"
+            >
+              <FaSearch />
+            </Button>
+          </InputGroup>
+        </Form>
+        <div className={`d-flex ${styles.authLinks}`}>
+          <NavItem>
+            <NavLink className={styles.navLink} href="#" onClick={toggleModal}>
+              <FaUser className="me-1" />
+              Login
+            </NavLink>
+
+            <Modal isOpen={modal} toggle={toggleModal}>
+              <LoginComponent />
+            </Modal>
+          </NavItem>
+          <NavItem>
+            <NavLink className={styles.navLink} href="/">
+              Create Account
+            </NavLink>
+          </NavItem>
+        </div>
+      </Nav>
     </Navbar>
   );
 }
