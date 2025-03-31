@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./navbar.module.css";
 
+
 import {
   Collapse,
   Navbar,
@@ -13,10 +14,18 @@ import {
   Input,
   InputGroup,
   Form,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter
 } from "reactstrap";
 
 import { FaSearch, FaUser } from "react-icons/fa";
+
 import { getSpotifyToken } from "../../services/spotifyService";
+
+import LoginComponent from "../login/LoginComponent";
+
 
 function NavbarComponent() {
   const [isOpen, setIsOpen] = useState(false);
@@ -47,6 +56,9 @@ function NavbarComponent() {
       console.error("Error fetching Spotify data:", error);
     }
   };
+
+  const [modal, setModal] = useState(false);
+  const toggleModal = () => setModal(!modal);
 
   return (
     <Navbar expand="lg" className={`px-3 ${styles.navbar}`} dark>
@@ -79,10 +91,15 @@ function NavbarComponent() {
           </Form>
           <div className={`d-flex ${styles.authLinks}`}>
             <NavItem>
-              <NavLink className={styles.navLink} href="#">
+              <NavLink className={styles.navLink} href="#" onClick={toggleModal}>
                 <FaUser className="me-1" />
                 Login
               </NavLink>
+
+              <Modal isOpen={modal} toggle={toggleModal}>
+                <LoginComponent />
+              </Modal>
+        
             </NavItem>
             <NavItem>
               <NavLink className={styles.navLink} href="/">
