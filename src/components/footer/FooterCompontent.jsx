@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import styles from "./Footer.module.css";
 
 function Footer() {
   return (
     <div className="w-100 bg-light text-muted mt-auto">
       <footer className="site-footer text-center text-lg-start w-100">
         {/* Section: Social Media  */}
-        <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+        <section className="d-flex justify-content-center justify-content-lg-between p-4">
           <div className="me-5 d-none d-lg-block">
             <span>Connect with us on social media!</span>
           </div>
@@ -75,7 +76,10 @@ function Footer() {
           </div>
         </section>
 
-        <div className="text-center p-4 bg-light border-top">
+        <div
+          className="text-center p-4  "
+          style={{ backgroundColor: "#f28749" }}
+        >
           &copy; {new Date().getFullYear()} Copyright:{" "}
           <a href="/" className="text-reset fw-bold text-decoration-none">
             groovo.com

@@ -1,4 +1,13 @@
+:root {
+  --background-color: #260a0c;
+  --button-color: #0b5916;
+  --navbar-color: #f28749;
+  --card-color: #a6411c;
+  /* --primary-color: green; */
+}
+
 .resultsContainer {
+  background-color: var(--background-color);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -42,7 +51,7 @@
 
 .noResults {
   font-size: 18px;
-  color: #888;
+  color: #fff;
   text-align: center;
   width: 100%;
   margin-top: 20px;
