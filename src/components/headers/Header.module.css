@@ -9,12 +9,27 @@
 .header {
     background-color: var(--card-color);
     padding: 20px;
-    border-radius: 20px;
     text-align: center;
-    width: 80%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
 .header h1 {
     margin: 0;
+    font-size: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header h3 {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     font-size: 24px;
 }
