@@ -1,0 +1,11 @@
+:root {
+  --background-color: #260a0c;
+  --button-color: #0b5916;
+  --navbar-color: #f28749;
+  --card-color: #a6411c;
+  /* --primary-color: green; */
+}
+
+footer {
+  background-color: var(--navbar-color);
+}

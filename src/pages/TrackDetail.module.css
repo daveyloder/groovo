@@ -1,0 +1,168 @@
+:root {
+  --background-color: #260a0c;
+  --button-color: #0b5916;
+  --navbar-color: #f28749;
+  --card-color: #a6411c;
+  /* --primary-color: green; */
+}
+
+.trackDetailContainer {
+  background-color: var(--background-color);
+  padding: 1rem;
+  margin-top: 1rem;
+  max-width: 1200px;
+}
+
+.backButton {
+  margin-bottom: 2rem;
+  background-color: #1db954;
+  border: none;
+}
+
+.backButton:hover {
+  background-color: #1ed760;
+}
+
+.albumCard {
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.albumInfo {
+  padding: 1rem;
+  background-color: #f8f9fa;
+}
+
+.trackInfo {
+  padding: 1rem;
+}
+
+.previewSection {
+  margin-bottom: 2rem;
+  padding: 1.2rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.previewSection h4 {
+  margin-bottom: 1rem;
+  color: #1db954;
+}
+
+.previewPlayer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.playButton {
+  width: 100%;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.customAudioPlayer {
+  width: 100%;
+  position: relative;
+}
+
+/* Hide default audio controls but keep functionality */
+.hiddenAudio {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+  position: absolute;
+}
+
+.noPreviewAlert {
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+.trackMetadata {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.metadataItem {
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+}
+
+.metadataLabel {
+  font-weight: bold;
+  margin-right: 0.8rem;
+  min-width: 80px;
+}
+
+.popularityBar {
+  height: 12px;
+  background-color: #e9ecef;
+  border-radius: 6px;
+  width: 100%;
+  max-width: 300px;
+  position: relative;
+  overflow: hidden;
+}
+
+.popularityFill {
+  height: 100%;
+  background-color: #1db954;
+  border-radius: 6px;
+}
+
+.popularityText {
+  position: absolute;
+  right: 8px;
+  top: -1px;
+  font-size: 12px;
+  color: #333;
+}
+
+.explicitTag {
+  display: inline-block;
+  background-color: #dc3545;
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+.lyricsContainer {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.lyricsContainer h2 {
+  margin-bottom: 1rem;
+  color: #1db954;
+}
+
+.lyrics {
+  white-space: pre-wrap;
+  line-height: 1.6;
+  margin-top: 1rem;
+  font-size: 1.1rem;
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+}
+
+.loading {
+  font-size: 1.5rem;
+  color: #1db954;
+}
