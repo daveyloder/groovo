@@ -31,7 +31,9 @@ const LoginComponent = ({ toggle }) => {
         Submit
       </Button>
       <div className={styles.closeButton}>
-        <Button onClick={toggle} size="sm" />
+        <Button onClick={toggle} size="sm">
+          &times;
+        </Button>
       </div>
     </Form>
   );
