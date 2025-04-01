@@ -115,7 +115,7 @@ function TrackDetailPage() {
   }
 
   return (
-    <Container className={styles.trackDetailContainer}>
+    <div className={styles.trackDetailContainer}>
       <Button className={styles.backButton} onClick={handleBack}>
         &larr; Back to Search Results
       </Button>
@@ -228,7 +228,7 @@ function TrackDetailPage() {
           </Col>
         </Row>
       )}
-    </Container>
+    </div>
   );
 }
 

@@ -3,7 +3,7 @@ export const getGeniusLyrics = async (artist, title) => {
 
   if (!accessToken) {
     console.error("Genius API key is missing!");
-    return null;
+    return "Lyrics not available.";
   }
 
   try {
@@ -28,10 +28,15 @@ export const getGeniusLyrics = async (artist, title) => {
       return "Lyrics not found on Genius.";
     }
 
-    // Get the first matching song's URL
-    const songPath = searchData.response.hits[0].result.url;
+    // Find the best matching song (ensure artist name matches)
+    const bestMatch =
+      searchData.response.hits.find((hit) =>
+        hit.result.primary_artist.name
+          .toLowerCase()
+          .includes(artist.toLowerCase())
+      ) || searchData.response.hits[0]; // Fallback to first result if no exact match
 
-    return songPath; // Return the Genius lyrics page URL
+    return bestMatch.result.url; // Return the Genius lyrics page URL
   } catch (error) {
     console.error("Error fetching lyrics from Genius:", error);
     return "Lyrics not available.";
