@@ -9,8 +9,6 @@
 .trackDetailContainer {
   background-color: var(--background-color);
   padding: 1rem;
-  margin-top: 1rem;
-  max-width: 1200px;
 }
 
 .backButton {
@@ -35,7 +33,12 @@
   background-color: #f8f9fa;
 }
 
-.trackInfo {
+.trackInfo h1 {
+  color: white;
+  padding: 1rem;
+}
+.trackInfo h3 {
+  color: white;
   padding: 1rem;
 }
 

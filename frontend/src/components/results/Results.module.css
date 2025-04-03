@@ -13,6 +13,8 @@
   justify-content: center;
   gap: 16px;
   padding: 20px;
+  min-height: 480px;
+  max-height: 1200px;
 }
 
 .resultCard {
@@ -53,6 +55,7 @@
   font-size: 18px;
   color: #fff;
   text-align: center;
+  align-content: center;
   width: 100%;
   margin-top: 20px;
 }
