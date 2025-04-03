@@ -4,7 +4,7 @@ import styles from "./createAccount.modules.css";
 const CreateAccount = () => {
 
     return (
-        <h1>Hello JAMEs</h1>
+        <h1>Hello</h1>
     )
 
 }
