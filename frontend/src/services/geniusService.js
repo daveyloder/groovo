@@ -1,44 +1,24 @@
 export const getGeniusLyrics = async (artist, title) => {
-  const accessToken = import.meta.env.VITE_GENIUS_ACCESS_TOKEN;
-
-  if (!accessToken) {
-    console.error("Genius API key is missing!");
-    return "Lyrics not available.";
-  }
-
   try {
-    // Search for the song on Genius
-    const searchUrl = `https://api.genius.com/search?q=${encodeURIComponent(
-      `${title} ${artist}`
-    )}`;
+    const response = await fetch(
+      `http://localhost:5000/api/genius/lyrics?artist=${encodeURIComponent(
+        artist
+      )}&title=${encodeURIComponent(title)}`
+    );
 
-    const searchResponse = await fetch(searchUrl, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    });
-
-    if (!searchResponse.ok) {
-      throw new Error("Failed to fetch Genius search results");
+    if (!response.ok) {
+      throw new Error("Failed to fetch Genius lyrics");
     }
 
-    const searchData = await searchResponse.json();
+    const data = await response.json();
 
-    if (!searchData.response.hits.length) {
-      return "Lyrics not found on Genius.";
+    if (!data.lyricsUrl) {
+      return "Lyrics not found.";
     }
 
-    // Find the best matching song (ensure artist name matches)
-    const bestMatch =
-      searchData.response.hits.find((hit) =>
-        hit.result.primary_artist.name
-          .toLowerCase()
-          .includes(artist.toLowerCase())
-      ) || searchData.response.hits[0]; // Fallback to first result if no exact match
-
-    return bestMatch.result.url; // Return the Genius lyrics page URL
+    return data.lyricsUrl; // Genius lyrics page URL
   } catch (error) {
-    console.error("Error fetching lyrics from Genius:", error);
+    console.error("Error fetching lyrics:", error);
     return "Lyrics not available.";
   }
 };

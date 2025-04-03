@@ -13,8 +13,6 @@ function TrackDetailPage() {
   const [trackData, setTrackData] = useState(null);
   const [lyrics, setLyrics] = useState("");
   const [loading, setLoading] = useState(true);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [audioPlayer, setAudioPlayer] = useState(null);
 
   useEffect(() => {
     // Use the track data passed via navigation state if available
@@ -25,14 +23,6 @@ function TrackDetailPage() {
       // If no state was passed, fetch the track data from Spotify API
       fetchTrackData();
     }
-
-    // Cleanup function for audio player
-    return () => {
-      if (audioPlayer) {
-        audioPlayer.pause();
-        audioPlayer.currentTime = 0;
-      }
-    };
   }, [trackId]);
 
   const fetchTrackData = async () => {
@@ -63,42 +53,18 @@ function TrackDetailPage() {
   const fetchLyrics = async (track) => {
     try {
       // You'll need to implement or use a lyrics API service
-      // This is an example using a hypothetical lyrics API
       const artistName = track.artists[0].name;
       const trackName = track.name;
 
       const lyricsUrl = await getGeniusLyrics(artistName, trackName);
 
-      setLyrics(
-        lyricsUrl
-          ? `View Lyrics on Genius: ${lyricsUrl}`
-          : "Lyrics not available."
-      );
+      setLyrics(lyricsUrl ? lyricsUrl : "Lyrics not available.");
 
       setLoading(false);
     } catch (error) {
       console.error("Error fetching lyrics:", error);
       setLyrics("Lyrics not available for this track.");
       setLoading(false);
-    }
-  };
-
-  const handlePlayPause = () => {
-    if (!audioPlayer && trackData?.preview_url) {
-      // Create a new audio player if it doesn't exist
-      const audio = new Audio(trackData.preview_url);
-      audio.addEventListener("ended", () => setIsPlaying(false));
-      setAudioPlayer(audio);
-      audio.play();
-      setIsPlaying(true);
-    } else if (audioPlayer) {
-      // Toggle play/pause on existing audio player
-      if (isPlaying) {
-        audioPlayer.pause();
-      } else {
-        audioPlayer.play();
-      }
-      setIsPlaying(!isPlaying);
     }
   };
 
@@ -142,7 +108,7 @@ function TrackDetailPage() {
               </div>
             </Card>
 
-            {/* Preview Player Section */}
+            {/* Preview Player Section
             <div className={styles.previewSection}>
               <h4>30-second Preview</h4>
               {trackData.preview_url ? (
@@ -174,7 +140,7 @@ function TrackDetailPage() {
                   No preview available for this track
                 </Alert>
               )}
-            </div>
+            </div> */}
           </Col>
           <Col md={8}>
             <div className={styles.trackInfo}>
