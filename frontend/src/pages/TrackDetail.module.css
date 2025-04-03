@@ -9,7 +9,6 @@
 .trackDetailContainer {
   background-color: var(--background-color);
   padding: 1rem;
-  max-width: 1200px;
 }
 
 .backButton {

@@ -1,7 +1,9 @@
+const API_URL = import.meta.env.VITE_BACKEND_URL;
+
 export const getGeniusLyrics = async (artist, title) => {
   try {
     const response = await fetch(
-      `http://localhost:5000/api/genius/lyrics?artist=${encodeURIComponent(
+      `${API_URL}/api/genius/lyrics?artist=${encodeURIComponent(
         artist
       )}&title=${encodeURIComponent(title)}`
     );
