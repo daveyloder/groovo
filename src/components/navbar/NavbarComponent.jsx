@@ -23,6 +23,7 @@ import { FaSearch, FaUser } from "react-icons/fa";
 import { getSpotifyToken } from "../../services/spotifyService";
 
 import LoginComponent from "../login/LoginComponent";
+import CreateAccount from "../createAccount/createAccount";
 
 function NavbarComponent({ onSearch }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -76,10 +77,16 @@ function NavbarComponent({ onSearch }) {
               <LoginComponent />
             </Modal>
           </NavItem>
+          
           <NavItem>
             <NavLink className={styles.navLink} href="/">
               Create Account
+              <Modal isOpen={modal} toggle={toggleModal}>
+                <CreateAccount />
+              </Modal>
             </NavLink>
+            
+            
           </NavItem>
         </div>
       </Nav>
