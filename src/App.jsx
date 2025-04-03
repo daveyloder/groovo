@@ -68,7 +68,7 @@ function App() {
       <NavbarComponent />
 
       <div>
-        <h1>Welcome to Groovo!</h1>
+        <Header />
       </div>
     </>
   );
