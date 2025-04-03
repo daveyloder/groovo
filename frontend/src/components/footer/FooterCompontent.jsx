@@ -77,6 +77,7 @@ function Footer() {
         </section>
 
         <div
+          id="copywright"
           className="text-center p-4  "
           style={{ backgroundColor: "#f28749" }}
         >

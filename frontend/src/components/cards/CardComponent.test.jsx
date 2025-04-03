@@ -4,4 +4,6 @@ import CardComponent from "./CardComponent";
 import { describe, it, expect } from "vitest";
 import "@testing-library/jest-dom/vitest";
 
-describe("CardComponent");
+describe("CardComponent", ()=>{
+    it("Generirc Test to start")
+});
