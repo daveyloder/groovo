@@ -9,3 +9,15 @@
 footer {
   background-color: var(--navbar-color);
 }
+
+footer h6 {
+  color: white;
+}
+
+footer p {
+  color: white;
+}
+
+footer span {
+  color: white;
+}
