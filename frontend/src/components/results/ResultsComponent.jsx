@@ -57,7 +57,11 @@ function ResultsComponent({ results }) {
                   Artist:{" "}
                   {track.artists?.map((a) => a.name).join(", ") ||
                     "Unknown Artist"}
+                    
                 </CardText>
+                <CardText>
+                          <i className="bi bi-bookmark-heart"></i>
+                          </CardText>
               </CardBody>
             </Card>
           );
