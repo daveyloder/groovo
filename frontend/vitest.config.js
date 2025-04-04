@@ -1,10 +1,7 @@
 import { defineConfig } from "vite";
 
-export default defineConfig({
+export default {
   test: {
-    enviroment: "jsdom",
-    coverage: {
-      provider: "v8",
-    },
+    environment: "jsdom",
   },
-});
+};

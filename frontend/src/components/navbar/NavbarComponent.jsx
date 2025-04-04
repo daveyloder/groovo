@@ -20,8 +20,6 @@ import {
 
 import { FaSearch, FaUser } from "react-icons/fa";
 
-import { getSpotifyToken } from "../../services/spotifyService";
-
 import LoginComponent from "../login/LoginComponent";
 
 function NavbarComponent({ onSearch }) {

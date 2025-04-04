@@ -14,7 +14,9 @@ const CardComponent = ({ track }) => {
           className={styles.albumImage}
         />
         <CardBody>
-          <CardTitle tag="h5">{track.name}</CardTitle>
+          <CardTitle tag="h5" data-testid="track-title">
+            {track.name}
+          </CardTitle>
           <CardText>
             Artist: {track.artists.map((a) => a.name).join(", ")}
           </CardText>
