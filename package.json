@@ -9,12 +9,5 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "@react-icons/all-files": "^4.1.0",
-    "bootstrap": "^5.3.5",
-    "bootstrap-icons": "^1.11.3",
-    "icons": "^1.0.0",
-    "react": "^19.1.0"
-  }
+  "description": ""
 }
