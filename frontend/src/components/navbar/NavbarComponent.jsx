@@ -24,17 +24,22 @@ import { getSpotifyToken } from "../../services/spotifyService";
 
 import LoginComponent from "../login/LoginComponent";
 
+import AccountComponent from "../account/AccountComponent";
+
 function NavbarComponent({ onSearch }) {
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [modal, setModal] = useState(false);
+  const [modal_login, setModal_login] = useState(false);
+  
+  const [modal_account, setModal_account] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
-  const toggleModal = () => setModal(!modal);
+  const toggleModal_login = () => setModal_login(!modal_login);
+  const toggleModal_account = () => setModal_account(!modal_account);
 
   const handleSearch = async (e) => {
     e.preventDefault();
-    onSearch(searchQuery);
+    onSearch(searchQuery); 
   };
 
   return (
@@ -67,19 +72,22 @@ function NavbarComponent({ onSearch }) {
         </Form>
         <div className={`d-flex ${styles.authLinks}`}>
           <NavItem>
-            <NavLink className={styles.navLink} href="#" onClick={toggleModal}>
+            <NavLink id="display-blank" className={styles.navLink} href="#" onClick={toggleModal_login}>
               <FaUser className="me-1" />
               Login
             </NavLink>
-
-            <Modal isOpen={modal} toggle={toggleModal}>
+            <Modal isOpen={modal_login} toggle={toggleModal_login}>
               <LoginComponent />
             </Modal>
           </NavItem>
           <NavItem>
-            <NavLink className={styles.navLink} href="/">
+            <NavLink id="display-account" className={styles.navLink} href="#" onClick={toggleModal_account}>
+              <FaUser className="me-1" />
               Create Account
             </NavLink>
+            <Modal isOpen={modal_account} toggle={toggleModal_account}>
+              <AccountComponent />
+            </Modal>
           </NavItem>
         </div>
       </Nav>
