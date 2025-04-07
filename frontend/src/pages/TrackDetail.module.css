@@ -159,6 +159,7 @@
 }
 
 .loadingContainer {
+  background-color: var(--background-color);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -167,5 +168,5 @@
 
 .loading {
   font-size: 1.5rem;
-  color: #1db954;
+  color: var(--navbar-color);
 }

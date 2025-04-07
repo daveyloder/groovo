@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
-import { Container, Row, Col, Card, CardImg, Button, Alert } from "reactstrap";
+import { Row, Col, Card, CardImg, Button, Spinner } from "reactstrap";
 import { getSpotifyToken } from "../services/spotifyService";
 import { getGeniusLyrics } from "../services/geniusService";
 import styles from "./TrackDetail.module.css";
@@ -74,9 +74,11 @@ function TrackDetailPage() {
 
   if (loading) {
     return (
-      <Container className={styles.loadingContainer}>
-        <div className={styles.loading}>Loading track details...</div>
-      </Container>
+      <div className={styles.loadingContainer}>
+        <div className={styles.loading}>
+          Loading track details... <Spinner />
+        </div>
+      </div>
     );
   }
 
