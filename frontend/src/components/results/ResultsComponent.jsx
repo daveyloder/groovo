@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Card, CardBody, CardTitle, CardText, CardImg } from "reactstrap";
 import { useNavigate } from "react-router-dom";
+import CardComponent from "../cards/CardComponent";
 import styles from "./Results.module.css";
 
 function ResultsComponent({ results }) {
@@ -39,31 +39,12 @@ function ResultsComponent({ results }) {
             track.album?.images?.[0]?.url || "https://via.placeholder.com/150";
 
           return (
-            <Card
+            <CardComponent
               key={track.id}
-              className={`${styles.resultCard} ${styles.clickableCard}`}
+              track={track}
+              albumImage={albumImage}
               onClick={() => handleCardClick(track)}
-            >
-              <CardImg
-                top
-                width="100%"
-                src={albumImage}
-                alt={track.name}
-                className={styles.albumImage}
-              />
-              <CardBody>
-                <CardTitle tag="h5">{track.name}</CardTitle>
-                <CardText>
-                  Artist:{" "}
-                  {track.artists?.map((a) => a.name).join(", ") ||
-                    "Unknown Artist"}
-                    
-                </CardText>
-                <CardText>
-                          <i className="bi bi-bookmark-heart"></i>
-                          </CardText>
-              </CardBody>
-            </Card>
+            />
           );
         })}
     </div>
