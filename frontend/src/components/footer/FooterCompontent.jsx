@@ -4,7 +4,7 @@ import styles from "./Footer.module.css";
 
 function Footer() {
   return (
-    <div className="w-100 bg-light text-muted mt-auto">
+    <div className={`w-100 bg-light text-muted mt-auto`}>
       <footer className="site-footer text-center text-lg-start w-100">
         {/* Section: Social Media  */}
         <section className="d-flex justify-content-center justify-content-lg-between p-4">

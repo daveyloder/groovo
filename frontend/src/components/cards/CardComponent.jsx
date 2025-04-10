@@ -7,10 +7,10 @@ const CardComponent = ({ track, onClick, liked, onHeartClick }) => {
     <>
       <Card
         key={track.id}
-        className={styles.resultCard}
-        onClick={onClick}
-        role="button"
-        tabIndex={0}
+        className={`${styles.resultCard} ${styles.clickableCard}`}
+        onClick={onClick} // ← Add this line
+        role="button" // (optional, helps with accessibility)
+        tabIndex={0} // (optional, makes it focusable for keyboard users)
       >
         <CardImg
           top
