@@ -8,9 +8,15 @@ const CardComponent = ({ track, albumImage, onClick }) => {
       <Card
         key={track.id}
         className={`${styles.resultCard} ${styles.clickableCard}`}
-        onClick={onClick} // ← Add this line
-        role="button" // (optional, helps with accessibility)
-        tabIndex={0} // (optional, makes it focusable for keyboard users)
+        onClick={onClick}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault(); // prevent page scroll with space
+            onClick();
+          }
+        }}
       >
         <CardImg
           top

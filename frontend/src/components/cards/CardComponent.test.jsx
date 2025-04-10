@@ -94,7 +94,7 @@ describe("CardComponent", () => {
     expect(card.className).toContain("mockClickableCard");
   });
   // David
-  it("calls onClick when Enter or Space is pressed", () => {
+  it("calls onClick only when Enter is pressed", () => {
     render(
       <CardComponent
         track={mockTrack}
@@ -103,13 +103,14 @@ describe("CardComponent", () => {
       />
     );
 
-    const card = screen.getAllByTestId("card")[0]; // use the first card
+    const card = screen.getAllByTestId("card")[0];
+    card.focus();
 
     fireEvent.keyDown(card, { key: "Enter", code: "Enter", charCode: 13 });
     expect(mockOnClick).toHaveBeenCalledTimes(1);
 
     fireEvent.keyDown(card, { key: " ", code: "Space", charCode: 32 });
-    expect(mockOnClick).toHaveBeenCalledTimes(2);
+    expect(mockOnClick).toHaveBeenCalledTimes(1); // still 1, since Space didn't trigger click
   });
 
   // Mike

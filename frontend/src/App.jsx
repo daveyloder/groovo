@@ -5,6 +5,7 @@ import ResultsComponent from "./components/results/ResultsComponent";
 import TrackDetailPage from "./pages/TrackDetailPage";
 import Footer from "./components/footer/FooterCompontent";
 import { getSpotifyToken } from "./services/spotifyService";
+import "./App.css";
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
@@ -64,16 +65,20 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavbarComponent onSearch={handleSearch} />
-      <Routes>
-        <Route
-          path="/"
-          element={<ResultsComponent results={searchResults} />}
-        />
-        <Route path="/track/:trackId" element={<TrackDetailPage />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
-      <Footer />
+      <div className="app-container">
+        <NavbarComponent onSearch={handleSearch} />
+        <div className="content-wrapper">
+          <Routes>
+            <Route
+              path="/"
+              element={<ResultsComponent results={searchResults} />}
+            />
+            <Route path="/track/:trackId" element={<TrackDetailPage />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </div>
+        <Footer />
+      </div>
     </BrowserRouter>
   );
 }
