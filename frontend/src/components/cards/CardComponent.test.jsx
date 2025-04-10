@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import CardComponent from "./CardComponent";
-import { describe, it, expect, vi, beforeEach } from "vitest";
+import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import "@testing-library/jest-dom/vitest";
 
 // Mock the CSS module
@@ -58,6 +58,10 @@ describe("CardComponent", () => {
     vi.clearAllMocks();
   });
 
+  afterEach(() => {
+    vi.resetAllMocks;
+  });
+  // Hans
   it("renders with the correct props", () => {
     render(
       <CardComponent
@@ -89,7 +93,26 @@ describe("CardComponent", () => {
     expect(card.className).toContain("mockResultCard");
     expect(card.className).toContain("mockClickableCard");
   });
+  // David
+  it("calls onClick when Enter or Space is pressed", () => {
+    render(
+      <CardComponent
+        track={mockTrack}
+        albumImage={mockAlbumImage}
+        onClick={mockOnClick}
+      />
+    );
 
+    const card = screen.getAllByTestId("card")[0]; // use the first card
+
+    fireEvent.keyDown(card, { key: "Enter", code: "Enter", charCode: 13 });
+    expect(mockOnClick).toHaveBeenCalledTimes(1);
+
+    fireEvent.keyDown(card, { key: " ", code: "Space", charCode: 32 });
+    expect(mockOnClick).toHaveBeenCalledTimes(2);
+  });
+
+  // Mike
   it("calls onClick when clicked", () => {
     render(
       <CardComponent
@@ -103,7 +126,7 @@ describe("CardComponent", () => {
 
     expect(mockOnClick).toHaveBeenCalledTimes(1);
   });
-
+  // Blake
   it("handles tracks without artists array", () => {
     const trackWithoutArtists = {
       id: "456",
