@@ -156,4 +156,4 @@ Please ensure your code follows the project's coding standards and includes rele
 
 ## License
 
-[Add your project's license information here.]
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for more information.
