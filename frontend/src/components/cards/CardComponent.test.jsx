@@ -45,12 +45,12 @@ vi.mock("reactstrap", () => ({
 
 describe("CardComponent", () => {
   const mockTrack = {
-    id: "123",
-    name: "Test Track",
-    artists: [{ name: "Artist 1" }, { name: "Artist 2" }],
+    id: "777",
+    name: "Blast Off",
+    artists: [{ name: "Silk Sonic" }],
   };
 
-  const mockAlbumImage = "http://example.com/album.jpg";
+  const mockAlbumImage = "https://upload.wikimedia.org/wikipedia/en/8/8e/Silk_Sonic_-_An_Evening_with_Silk_Sonic.png";
   const mockOnClick = vi.fn();
 
   // Clean up after each test to prevent test interference
@@ -78,13 +78,13 @@ describe("CardComponent", () => {
     expect(screen.getByTestId("card-title")).toBeDefined();
 
     // Check content
-    expect(screen.getByTestId("card-title").textContent).toBe("Test Track");
-    expect(screen.getByText(/Artist: Artist 1, Artist 2/i)).toBeDefined();
+    expect(screen.getByTestId("card-title").textContent).toBe("Blast Off");
+    expect(screen.getByText(/Artist: Silk Sonic/i)).toBeDefined();
 
     // Check image props
     const img = screen.getByTestId("card-img");
     expect(img).toHaveAttribute("src", mockAlbumImage);
-    expect(img).toHaveAttribute("alt", "Test Track");
+    expect(img).toHaveAttribute("alt", "Blast Off");
 
     // Check card props
     const card = screen.getByTestId("card");
