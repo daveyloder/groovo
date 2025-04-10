@@ -12,16 +12,17 @@ function Footer() {
             <span>Connect with us on social media!</span>
           </div>
           <div>
-            <a href="#" className="me-4 text-reset">
-              <i className="fab fa-facebook-f" />
+            <a href="https://www.facebook.com" className="me-4 text-reset" target="_blank" rel="noopener noreferrer">
+              <i className="bi bi-facebook"></i>
             </a>
-            <a href="#" className="me-4 text-reset">
-              <i className="fab fa-twitter" />
+            <a href="https://www.twitter.com" className="me-4 text-reset" target="_blank" rel="noopener noreferrer">
+              <i className="bi bi-twitter"></i>
             </a>
-            <a href="#" className="me-4 text-reset">
-              <i className="fab fa-instagram" />
+            <a href="https://www.instagram.com" className="me-4 text-reset" target="_blank" rel="noopener noreferrer">
+              <i className="bi bi-instagram"></i>
             </a>
           </div>
+
         </section>
 
         {/* Section: Links */}
@@ -38,24 +39,19 @@ function Footer() {
             <div className="col-md-4 mb-4">
               <h6 className="text-uppercase fw-bold mb-4">Links</h6>
               <p>
-                <Link className="text-reset text-decoration-none" to="/">
-                  Home
+                <Link
+                  className="text-reset text-decoration-none"
+                  to="/login"
+                >
+                  Login
                 </Link>
               </p>
               <p>
                 <Link
                   className="text-reset text-decoration-none"
-                  to="/services"
+                  to="/createaccount"
                 >
-                  Services
-                </Link>
-              </p>
-              <p>
-                <Link
-                  className="text-reset text-decoration-none"
-                  to="/contactus"
-                >
-                  Contact Us
+                  Create Account
                 </Link>
               </p>
             </div>
@@ -63,14 +59,17 @@ function Footer() {
             <div className="col-md-4 mb-4">
               <h6 className="text-uppercase fw-bold mb-4">Contact</h6>
               <p>
-                <i className="fas fa-house me-3"></i> 1801 N Broad St,
+                <i class="bi bi-house-fill">
+                  <i className="fas fa-house me-3"></i></i> 1801 N Broad St,
                 Philadelphia, PA
               </p>
               <p>
-                <i className="fas fa-envelope me-3"></i> groovo@example.com
+                <i class="bi bi-envelope-fill"></i>
+                <i className="fas fa-envelope me-3"></i> groovo@gmail.com
               </p>
               <p>
-                <i className="fas fa-phone me-3"></i> +1 (609) 234-5678
+                <i class="bi bi-telephone-fill">
+                  <i className="fas fa-phone me-3"></i></i> +1 (609) 234-5678
               </p>
             </div>
           </div>
