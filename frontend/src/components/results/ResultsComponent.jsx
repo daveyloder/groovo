@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { Card, CardBody, CardTitle, CardText, CardImg } from "reactstrap";
 import { useNavigate } from "react-router-dom";
-import CardComponent from "../cards/CardComponent";
 import styles from "./Results.module.css";
+import CardComponent from "../cards/CardComponent"; // Ensure you import CardComponent
 
-function ResultsComponent({ results }) {
+function ResultsComponent({
+  results,
+  loggedInUsername,
+  isTrackFavorite,
+  onHeartClick,
+}) {
   const [displayMessage, setDisplayMessage] = useState(
     "Please search using navbar search"
   );
@@ -20,33 +26,25 @@ function ResultsComponent({ results }) {
     }
   }, [results]);
 
-  // Handle click on a card to navigate to track detail page
-  const handleCardClick = (track) => {
-    navigate(`/track/${track.id}`, {
-      state: {
-        trackData: track,
-      },
-    });
-  };
-
   return (
     <div className={styles.resultsContainer}>
       {displayMessage && <p className={styles.noResults}>{displayMessage}</p>}
       {results &&
         results.length > 0 &&
-        results.map((track) => {
-          const albumImage =
-            track.album?.images?.[0]?.url || "https://via.placeholder.com/150";
-
-          return (
-            <CardComponent
-              key={track.id}
-              track={track}
-              albumImage={albumImage}
-              onClick={() => handleCardClick(track)}
-            />
-          );
-        })}
+        results.map((track) => (
+          <CardComponent
+            key={track.id}
+            track={track}
+            liked={isTrackFavorite(track.id)}
+            onHeartClick={(track, isLiked) =>
+              onHeartClick(track, isLiked, loggedInUsername)
+            }
+            loggedInUsername={loggedInUsername}
+            onClick={() =>
+              navigate(`/track/${track.id}`, { state: { trackData: track } })
+            }
+          />
+        ))}
     </div>
   );
 }

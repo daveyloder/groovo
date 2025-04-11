@@ -3,7 +3,6 @@ import styles from "./navbar.module.css";
 
 import {
   Navbar,
-  NavbarToggler,
   NavbarBrand,
   Nav,
   NavItem,
@@ -13,23 +12,17 @@ import {
   InputGroup,
   Form,
   Modal,
-  ModalHeader,
   ModalBody,
-  ModalFooter,
 } from "reactstrap";
 
 import { FaSearch, FaUser } from "react-icons/fa";
 
-import { getSpotifyToken } from "../../services/spotifyService";
+import AccountComponent from "../account/AccountComponent"; // Import AccountComponent
 
-import LoginComponent from "../login/LoginComponent";
-
-function NavbarComponent({ onSearch }) {
-  const [isOpen, setIsOpen] = useState(false);
+function NavbarComponent({ onSearch, onLogin, loggedInUsername, onLogout }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [modal, setModal] = useState(false);
 
-  const toggle = () => setIsOpen(!isOpen);
   const toggleModal = () => setModal(!modal);
 
   const handleSearch = async (e) => {
@@ -66,21 +59,30 @@ function NavbarComponent({ onSearch }) {
           </InputGroup>
         </Form>
         <div className={`d-flex ${styles.authLinks}`}>
-          <NavItem>
-            <NavLink className={styles.navLink} href="#" onClick={toggleModal}>
-              <FaUser className="me-1" />
-              Login
-            </NavLink>
+          {loggedInUsername ? (
+            <NavItem>
+              <NavLink className={styles.navLink} href="#" onClick={onLogout}>
+                Logout ({loggedInUsername})
+              </NavLink>
+            </NavItem>
+          ) : (
+            <NavItem>
+              <NavLink
+                className={styles.navLink}
+                href="#"
+                onClick={toggleModal}
+              >
+                <FaUser className="me-1" />
+                Login/Create Account
+              </NavLink>
 
-            <Modal isOpen={modal} toggle={toggleModal}>
-              <LoginComponent />
-            </Modal>
-          </NavItem>
-          <NavItem>
-            <NavLink className={styles.navLink} href="/">
-              Create Account
-            </NavLink>
-          </NavItem>
+              <Modal isOpen={modal} toggle={toggleModal}>
+                <ModalBody>
+                  <AccountComponent toggle={toggleModal} onLogin={onLogin} />
+                </ModalBody>
+              </Modal>
+            </NavItem>
+          )}
         </div>
       </Nav>
     </Navbar>
