@@ -1,16 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Card, CardBody, CardTitle, CardText, CardImg } from "reactstrap";
 import styles from "./Card.module.css";
 
-const CardComponent = ({ track, onClick, liked, onHeartClick }) => {
+const CardComponent = ({
+  track,
+  onClick,
+  liked: initialLiked,
+  onHeartClick: parentOnHeartClick,
+  loggedInUsername,
+}) => {
+  const [liked, setLiked] = useState(initialLiked || false);
+
+  useEffect(() => {
+    setLiked(initialLiked || false);
+  }, [initialLiked]);
+
+  const handleHeartClick = (e) => {
+    e.stopPropagation();
+    setLiked(!liked);
+    parentOnHeartClick(track, !liked, loggedInUsername); // Pass track, liked status, and username
+  };
+
   return (
     <>
       <Card
         key={track.id}
         className={`${styles.resultCard} ${styles.clickableCard}`}
-        onClick={onClick} // ← Add this line
-        role="button" // (optional, helps with accessibility)
-        tabIndex={0} // (optional, makes it focusable for keyboard users)
+        onClick={onClick}
+        role="button"
+        tabIndex={0}
       >
         <CardImg
           top
@@ -26,12 +44,11 @@ const CardComponent = ({ track, onClick, liked, onHeartClick }) => {
           </CardText>
           <CardText>
             <i
-              className={`bi ${liked ? "bi-bookmark-heart-fill" : "bi-bookmark-heart"}`}
+              className={`bi ${
+                liked ? "bi-bookmark-heart-fill" : "bi-bookmark-heart"
+              }`}
               style={{ color: liked ? "red" : "gray", cursor: "pointer" }}
-              onClick={(e) => {
-                e.stopPropagation();
-                onHeartClick();
-              }}
+              onClick={handleHeartClick}
             ></i>
           </CardText>
         </CardBody>
