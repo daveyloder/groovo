@@ -25,11 +25,9 @@ import { getSpotifyToken } from "../../services/spotifyService";
 import LoginComponent from "../login/LoginComponent";
 
 function NavbarComponent({ onSearch }) {
-  const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [modal, setModal] = useState(false);
 
-  const toggle = () => setIsOpen(!isOpen);
   const toggleModal = () => setModal(!modal);
 
   const handleSearch = async (e) => {
