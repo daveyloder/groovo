@@ -32,7 +32,7 @@ vi.mock("reactstrap", () => ({
     return <Tag data-testid="card-title">{children}</Tag>;
   },
   CardText: ({ children }) => <div data-testid="card-text">{children}</div>,
-  CardImg: ({ src, alt, className, top, width }) => (
+  CardImg: ({ src, alt, className, width }) => (
     <img
       data-testid="card-img"
       src={src}
