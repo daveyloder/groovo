@@ -2,22 +2,18 @@ import React, { useEffect, useState } from "react";
 import { Card, CardBody, CardTitle, CardText, CardImg } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import styles from "./Results.module.css";
+import CardComponent from "../cards/CardComponent"; // Ensure you import CardComponent
 
-function ResultsComponent({ results }) {
+function ResultsComponent({
+  results,
+  loggedInUsername,
+  isTrackFavorite,
+  onHeartClick,
+}) {
   const [displayMessage, setDisplayMessage] = useState(
     "Please search using navbar search"
   );
   const navigate = useNavigate();
-  //
-  const [likedTracks, setLikedTracks] = useState({});
-
-  //
-  const toggleLike = (trackId) => {
-    setLikedTracks((prev) => ({
-      ...prev,
-      [trackId]: !prev[trackId],
-    }));
-  };
 
   // Update message when results change
   useEffect(() => {
@@ -30,64 +26,25 @@ function ResultsComponent({ results }) {
     }
   }, [results]);
 
-  // Handle click on a card to navigate to track detail page
-  const handleCardClick = (track) => {
-    navigate(`/track/${track.id}`, {
-      state: {
-        trackData: track,
-      },
-    });
-  };
-
   return (
     <div className={styles.resultsContainer}>
       {displayMessage && <p className={styles.noResults}>{displayMessage}</p>}
       {results &&
         results.length > 0 &&
-        results.map((track) => {
-          const albumImage =
-            track.album?.images?.[0]?.url || "https://via.placeholder.com/150";
-
-          return (
-            <Card
-              key={track.id}
-              className={`${styles.resultCard} ${styles.clickableCard}`}
-              onClick={() => handleCardClick(track)}
-            >
-              <CardImg
-                top
-                width="100%"
-                src={albumImage}
-                alt={track.name}
-                className={styles.albumImage}
-              />
-              <CardBody>
-                <CardTitle tag="h5">{track.name}</CardTitle>
-                <CardText>
-                  Artist:{" "}
-                  {track.artists?.map((a) => a.name).join(", ") ||
-                    "Unknown Artist"}
-                </CardText>
-                <CardText>
-                  <i
-                    className={`bi ${likedTracks[track.id]
-                        ? "bi-bookmark-heart-fill"
-                        : "bi-bookmark-heart"
-                      }`}
-                    style={{
-                      color: likedTracks[track.id] ? "red" : "gray",
-                      cursor: "pointer",
-                    }}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      toggleLike(track.id);
-                    }}
-                  ></i>
-                </CardText>
-              </CardBody>
-            </Card>
-          );
-        })}
+        results.map((track) => (
+          <CardComponent
+            key={track.id}
+            track={track}
+            liked={isTrackFavorite(track.id)}
+            onHeartClick={(track, isLiked) =>
+              onHeartClick(track, isLiked, loggedInUsername)
+            }
+            loggedInUsername={loggedInUsername}
+            onClick={() =>
+              navigate(`/track/${track.id}`, { state: { trackData: track } })
+            }
+          />
+        ))}
     </div>
   );
 }
